@@ -337,20 +337,29 @@ body {
 			}
 		}
 
-		.page-link {
+		.page-links {
 			clear: both;
-			margin: 3.2em 0;
-			font-weight: bold;
-			color: $link-color;
+			margin: 1.6em 0;
+			color: $accent-color;
 
-			a {
-				color: $link-color;
-				padding: 4px 10px;
+			span {
+				background: $accent-color;
+				color: #FFF;
+				padding: 0.1em 0.3em;
 				text-decoration:none;
-				border: solid 1px $link-color;
 				border-radius: 2px;
 				font-weight: normal;
 				text-align: center;
+				display: inline-block;
+				line-height: 1;
+			}
+
+			a {
+				span {
+					color: $meta-color;
+					border: solid 1px $meta-color;
+					background: #FFF;
+				}
 
 				&:hover {
 					background: #F5F5F5;
@@ -571,14 +580,13 @@ body {
 -------------------------------------------------------------- */
 #content .hentry img,
 .widget img {
-	max-width: 100%; /* Fluid images for posts, comments, and 
-	ets */
+	max-width: 100%;
 	height: auto;
 }
 
 img[class*="align"],
 img[class*="wp-image-"] {
-	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+	height: auto;
 }
 
 .aligncenter {
@@ -603,19 +611,8 @@ img.aligncenter {
 	margin-bottom: 0.75em;
 }
 
-a:focus img[class*="attachment"],
-a:hover img[class*="attachment"],
-a:focus img[class*="align"],
-a:hover img[class*="align"],
-a:active img[class*="align"],
-a:focus img[class*="wp-image-"],
-a:hover img[class*="wp-image-"],
-a:active img[class*="wp-image-"],
-#content .gallery .gallery-icon a:focus img,
-#content .gallery .gallery-icon a:hover img,
-#content .gallery .gallery-icon a:active img,
-#content .hentry a:hover img {
-	border-color: #bbb;
+a:hover img {
+	@include opacity(0.9);
 }
 
 #content .hentry {
@@ -628,21 +625,6 @@ a:active img[class*="wp-image-"],
 		max-width: 100%;
 	}
 
-	.gallery-item a,
-	.entry-attachment a,
-	.entry-attachment a:hover,
-	.wp-caption a,
-	.wp-caption a:hover,
-	.gallery a:hover {
-		border: none ;
-	}
-
-	.gallery-thumb {
-		float: right;
-		display: block;
-		margin: 0 0 10px 10px;
-	}
-
 	.gallery {
 		margin: 0 auto;
 		clear: both;
@@ -650,16 +632,26 @@ a:active img[class*="wp-image-"],
 		.gallery-item {
 			float: left;
 			text-align: center;
-			margin: 0 0 10px 0;
+			padding: 0 2px;
+			margin-bottom: 4px;
 			width: 33%;
+
+			a {
+				display: block;
+			}
+
+			img {
+				vertical-align:bottom;
+			}
 		}
 
 		.wp-caption,
 		.gallery-caption {
 			font-size: 12px;
-			line-height: 1.2;
-		    color: #AAA;
-			max-width: 97.5%;
+			line-height: 1;
+		    color: $meta-color;
+			max-width: 100%;
+			margin: 2px 0;
 			text-align: center;
 		}
 
@@ -1178,23 +1170,23 @@ video {
 -------------------------------------------------------------------- */
 #content .tablenav {
 	clear: both;
-	color: $link-color;
+	color: $accent-color;
 	@include clearfix;
 
 	a.page-numbers,
 	.current {
 		display: inline-block;
-		color: $link-color;
-		border:solid 1px $link-color;
+		color: $meta-color;
+		border:solid 1px $meta-color;
 		text-decoration:none;
-		font-weight: bold;
 		text-align: center;
-		padding: 4px 10px;
+		padding: 0.1em 0.3em;
 		border-radius: 2px;
-		margin-right: 0.2em;
+		margin-right: 0.1em;
 
 		&.prev,
 		&.next {
+			color: $accent-color;
 			border: none;
 		}
 	}
@@ -1211,7 +1203,8 @@ video {
 
 	.current {
 		color: #FFF;
-		background: $link-color;
+		background: $accent-color;
+		border:solid 1px $accent-color;
 	}
 }
 
@@ -1307,6 +1300,20 @@ video {
 
 	#content {
 		padding: 3.2em 0;
+
+		.hentry {
+			.gallery {
+				.gallery-item {
+					padding: 0 5px;
+					margin-bottom: 10px;
+				}
+			}
+
+			.wp-caption,
+			.gallery-caption {
+				margin: 5px 0;
+			}
+		}
 
 		ul.article {
 			.hentry {

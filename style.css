@@ -322,21 +322,26 @@ body {
         padding-right: 0.2em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale; }
-    #content .hentry .page-link {
+    #content .hentry .page-links {
       clear: both;
-      margin: 3.2em 0;
-      font-weight: bold;
-      color: #1c4bbe; }
-      #content .hentry .page-link a {
-        color: #1c4bbe;
-        padding: 4px 10px;
+      margin: 1.6em 0;
+      color: #ff4a5d; }
+      #content .hentry .page-links span {
+        background: #ff4a5d;
+        color: #FFF;
+        padding: 0.1em 0.3em;
         text-decoration: none;
-        border: solid 1px #1c4bbe;
         border-radius: 2px;
         font-weight: normal;
-        text-align: center; }
-        #content .hentry .page-link a:hover {
-          background: #F5F5F5; }
+        text-align: center;
+        display: inline-block;
+        line-height: 1; }
+      #content .hentry .page-links a span {
+        color: #999999;
+        border: solid 1px #999999;
+        background: #FFF; }
+      #content .hentry .page-links a:hover {
+        background: #F5F5F5; }
     #content .hentry a.more-link {
       font-size: 0.8em;
       background: #ff4a5d;
@@ -491,14 +496,11 @@ body {
 #content .hentry img,
 .widget img {
   max-width: 100%;
-                 /* Fluid images for posts, comments, and 
-ets */
   height: auto; }
 
 img[class*="align"],
 img[class*="wp-image-"] {
-  height: auto;
-  /* Make sure images with WordPress-added height and width attributes are scaled correctly */ }
+  height: auto; }
 
 .aligncenter {
   margin-left: auto;
@@ -518,19 +520,9 @@ img.alignright,
 img.aligncenter {
   margin-bottom: 0.75em; }
 
-a:focus img[class*="attachment"],
-a:hover img[class*="attachment"],
-a:focus img[class*="align"],
-a:hover img[class*="align"],
-a:active img[class*="align"],
-a:focus img[class*="wp-image-"],
-a:hover img[class*="wp-image-"],
-a:active img[class*="wp-image-"],
-#content .gallery .gallery-icon a:focus img,
-#content .gallery .gallery-icon a:hover img,
-#content .gallery .gallery-icon a:active img,
-#content .hentry a:hover img {
-  border-color: #bbb; }
+a:hover img {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9; }
 
 #content .hentry .wp-caption {
   background: #F5F5F5;
@@ -539,31 +531,26 @@ a:active img[class*="wp-image-"],
   font-size: 0.8em;
   color: #999;
   max-width: 100%; }
-#content .hentry .gallery-item a,
-#content .hentry .entry-attachment a,
-#content .hentry .entry-attachment a:hover,
-#content .hentry .wp-caption a,
-#content .hentry .wp-caption a:hover,
-#content .hentry .gallery a:hover {
-  border: none; }
-#content .hentry .gallery-thumb {
-  float: right;
-  display: block;
-  margin: 0 0 10px 10px; }
 #content .hentry .gallery {
   margin: 0 auto;
   clear: both; }
   #content .hentry .gallery .gallery-item {
     float: left;
     text-align: center;
-    margin: 0 0 10px 0;
+    padding: 0 2px;
+    margin-bottom: 4px;
     width: 33%; }
+    #content .hentry .gallery .gallery-item a {
+      display: block; }
+    #content .hentry .gallery .gallery-item img {
+      vertical-align: bottom; }
   #content .hentry .gallery .wp-caption,
   #content .hentry .gallery .gallery-caption {
     font-size: 12px;
-    line-height: 1.2;
-    color: #AAA;
-    max-width: 97.5%;
+    line-height: 1;
+    color: #999999;
+    max-width: 100%;
+    margin: 2px 0;
     text-align: center; }
   #content .hentry .gallery.gallery-columns-2 .gallery-item {
     max-width: 50%; }
@@ -963,23 +950,23 @@ video {
 -------------------------------------------------------------------- */
 #content .tablenav {
   clear: both;
-  color: #1c4bbe;
+  color: #ff4a5d;
   overflow: hidden;
   *zoom: 1; }
   #content .tablenav a.page-numbers,
   #content .tablenav .current {
     display: inline-block;
-    color: #1c4bbe;
-    border: solid 1px #1c4bbe;
+    color: #999999;
+    border: solid 1px #999999;
     text-decoration: none;
-    font-weight: bold;
     text-align: center;
-    padding: 4px 10px;
+    padding: 0.1em 0.3em;
     border-radius: 2px;
-    margin-right: 0.2em; }
+    margin-right: 0.1em; }
     #content .tablenav a.page-numbers.prev, #content .tablenav a.page-numbers.next,
     #content .tablenav .current.prev,
     #content .tablenav .current.next {
+      color: #ff4a5d;
       border: none; }
   #content .tablenav a.page-numbers:hover {
     background: #F5F5F5; }
@@ -988,7 +975,8 @@ video {
       text-decoration: underline; }
   #content .tablenav .current {
     color: #FFF;
-    background: #1c4bbe; }
+    background: #ff4a5d;
+    border: solid 1px #ff4a5d; }
 
 /* Media queries for responsive design
 --------------------------------------------- */
@@ -1054,6 +1042,12 @@ video {
 
   #content {
     padding: 3.2em 0; }
+    #content .hentry .gallery .gallery-item {
+      padding: 0 5px;
+      margin-bottom: 10px; }
+    #content .hentry .wp-caption,
+    #content .hentry .gallery-caption {
+      margin: 5px 0; }
     #content ul.article .hentry .entry-eyecatch {
       margin-bottom: 0;
       float: left; }

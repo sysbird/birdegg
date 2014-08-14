@@ -21,7 +21,7 @@ get_header(); ?>
 <?php
 
 	$post                = get_post();
-	$attachment_size     = apply_filters( 'birdfield', array( 930, 930 ) );
+	$attachment_size     = apply_filters( 'birdegg', array( 930, 930 ) );
 	$next_attachment_url = wp_get_attachment_url();
 	$attachment_ids = get_posts( array(
 		'post_parent'    => $post->post_parent,
@@ -67,7 +67,7 @@ get_header(); ?>
 				</div>
 
 				<?php the_content(); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'birdfield' ), 'after' => '</div>' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'birdegg' ), 'after' => '</div>' ) ); ?>
 
 			</div>
 
@@ -77,14 +77,13 @@ get_header(); ?>
 				<span class="parent-post-link"><a href="<?php echo get_permalink( $post->post_parent ); ?>" rel="gallery"><?php echo get_the_title( $post->post_parent ); ?></a></span>
 			</footer>
 
+			<?php comments_template(); ?>
 		</article>
 
 		<nav id="nav-below">
-			<span class="nav-previous"><?php next_image_link( false, __( 'Next Image' , 'birdfield' ) ); ?></span>
-			<span class="nav-next"><?php previous_image_link( false, __( 'Previous Image' , 'birdfield' ) ); ?></span>
+			<span class="nav-previous"><?php next_image_link( false, __( 'Next Image' , 'birdegg' ) ); ?></span>
+			<span class="nav-next"><?php previous_image_link( false, __( 'Previous Image' , 'birdegg' ) ); ?></span>
 		</nav>
-
-		<?php comments_template(); ?>
 
 	<?php endwhile; ?>
 	</div>

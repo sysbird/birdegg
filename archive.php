@@ -10,25 +10,25 @@ get_header(); ?>
 		<header class="content-header">
 			<h1 class="content-title"><?php
 				if(is_category()) {
-					printf(__('Category Archives: %s', 'birdfield'), single_cat_title('', false));
+					printf(__('Category Archives: %s', 'birdegg'), single_cat_title('', false));
 				}
 				elseif( is_tag() ) {
-					printf(__('Tag Archives: %s', 'birdfield'), single_tag_title('', false) );
+					printf(__('Tag Archives: %s', 'birdegg'), single_tag_title('', false) );
 				}
 				elseif (is_day()) {
-					printf(__('Daily Archives: %s', 'birdfield'), get_post_time(get_option('date_format')));
+					printf(__('Daily Archives: %s', 'birdegg'), get_post_time(get_option('date_format')));
 				}
 				elseif (is_month()) {
-					printf(__('Monthly Archives: %s', 'birdfield'), get_post_time(__('F, Y', 'birdfield')));
+					printf(__('Monthly Archives: %s', 'birdegg'), get_post_time(__('F, Y', 'birdegg')));
 				}
 				elseif (is_year()) {
-					printf(__('Yearly Archives: %s', 'birdfield'), get_post_time(__('Y', 'birdfield')));
+					printf(__('Yearly Archives: %s', 'birdegg'), get_post_time(__('Y', 'birdegg')));
 				}
 				elseif (is_author()) {
-					printf(__('Author Archives: %s', 'birdfield'), get_the_author_meta('display_name', get_query_var('author')) );
+					printf(__('Author Archives: %s', 'birdegg'), get_the_author_meta('display_name', get_query_var('author')) );
 				}
 				elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-					_e('Blog Archives', 'birdfield');
+					_e('Blog Archives', 'birdegg');
 				}
 			?></h1>
 		</header>
@@ -41,7 +41,7 @@ get_header(); ?>
 			</ul>
 			<div class="tablenav"><?php birdegg_the_pagenation(); ?></div>
 		<?php else: ?>
-			<p><?php _e( 'Sorry, no posts matched your criteria.', 'birdfield' ); ?></p>
+			<p><?php _e( 'Sorry, no posts matched your criteria.', 'birdegg' ); ?></p>
 		<?php endif; ?>
 	</div>
 </div>

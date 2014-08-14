@@ -144,6 +144,10 @@ function birdegg_header_style() {
 	#content h5,
 	#content h6,
 	#content #comments li.bypostauthor .comment_meta .author,
+	#content .tablenav a.page-numbers.prev,
+	#content .tablenav a.page-numbers.next,
+	#content .content-header .content-title,
+	#content .hentry .page-links,
 	#widget-area .widget h3,
 	#widget-area .widget #wp-calendar tbody th a,
 	#widget-area .widget #wp-calendar tbody td a,
@@ -152,36 +156,26 @@ function birdegg_header_style() {
 		color: <?php echo $birdegg_accent_color; ?>;
 		}
 
+	#content .tablenav .current,
 	#widget-area .widget h3 {
 		border-color: <?php echo $birdegg_accent_color; ?>;
 		}
 
-	#content .hentry a.more-link {
+	#content .hentry a.more-link,
+	#content .hentry .page-links span,
+	#content .tablenav .current {
 		background-color: <?php echo $birdegg_accent_color; ?>;
 		}
 
 	.wrapper,
-		.home #content #blog ul.article .hentry .entry-header .entry-title,
-		.archive #content ul.list li a .entry-content,
-		.search #content ul.list li a .entry-content {
+	#content .hentry .entry-header .entry-title,
+	#content .hentry .entry-header .entry-title a,
+		#menu-wrapper .menu ul#menu-primary-items li a {
 		color:  <?php echo $birdegg_text_color; ?>;
 		}
 
-		a,
-		.home #content #news ul.article li .entry-header .entry-title,
-		.archive #content ul.list li .entry-header .entry-title,
-		.search #content ul.list li .entry-header .entry-title {
-		color:  <?php echo $birdegg_link_color; ?>;
-		}
-
-	#content .tablenav a.page-numbers {
-		border-color: <?php echo $birdegg_link_color; ?>;
-		color: <?php echo $birdegg_link_color; ?>;
-		}
-
-	#content .tablenav .current {
-	  	background: <?php echo $birdegg_link_color; ?>;
-	  	border-color: <?php echo $birdegg_link_color; ?>;
+	a {
+			color:  <?php echo $birdegg_link_color; ?>;
 		}
 
 	#widget-area {
@@ -430,6 +424,25 @@ function birdegg_customize($wp_customize) {
 	) ) );
 }
 add_action( 'customize_register', 'birdegg_customize' );
+
+//////////////////////////////////////////////////////
+// Excerpt More
+function birdegg_excerpt_more($more) { 
+	return ' <a href="'. esc_url( get_permalink() ) . '" class="more-link">' .__( 'Continue reading', 'birdegg' ) . '</a>';
+}
+add_filter('excerpt_more', 'birdegg_excerpt_more'); 
+
+//////////////////////////////////////////////////////
+// Removing the default gallery style
+function birdegg_gallery_atts( $out, $pairs, $atts ) {
+
+	$atts = shortcode_atts( array( 'size' => 'medium', ), $atts );
+	$out['size'] = $atts['size'];
+
+	return $out;
+}
+add_filter( 'shortcode_atts_gallery', 'birdegg_gallery_atts', 10, 3 );
+add_filter( 'use_default_gallery_style', '__return_false' );
 
 //////////////////////////////////////////////////////
 // Custom Background callback
