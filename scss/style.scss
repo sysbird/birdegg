@@ -199,7 +199,7 @@ body {
 				list-style: none;
 
 				a {
-					padding: 0.8em;
+					padding: 0.4em 0.8em;
 					display: block;
 					color: $text-color;
 					text-decoration: none;
@@ -296,6 +296,7 @@ body {
 			span {
 				padding: 2px 5px;
 				border: solid 1px $border-color;
+				background: #FFF;
 				border-radius: 2px;
 				margin: 0 0 4px 4px;
 				display: block;
@@ -363,7 +364,7 @@ body {
 			a {
 				span {
 					color: $meta-color;
-					border: solid 1px $meta-color;
+					border: solid 1px $border-color;
 					background: #FFF;
 				}
 
@@ -391,10 +392,10 @@ body {
 		margin: 0.7em 0;
 		line-height:1.2;
 		font-weight: normal;
-		color: $accent-color;
+		color: $text-color;
 
 		a {
-			color: $accent-color;
+			color: $text-color;
 		}
 	}
 
@@ -406,12 +407,12 @@ body {
 	h6 {font-size:1.2rem;}
 
 	h2 {
-		border-bottom: dashed 1px $border-color;
+		border-bottom: dashed 1px $text-color;
 		padding-bottom: 0.4em;
 	}
 
 	h3 {
-		border-left: solid 7px $border-color;
+		border-left: solid 7px $text-color;
 		padding-left: 10px;
 	}
 	
@@ -470,14 +471,17 @@ body {
 
 	pre {
 		border: dashed 1px #CCC;
+		background: $border-color;
 		padding: 0.8em;
-		background: #EEE;
 		margin-bottom: 1.6em;
-		line-height: 1.4;
+		line-height: 1.2;
+		color: $text-color;
 	}
 
 	code {
-		background: #EEE;
+		background: $border-color;
+		color: $text-color;
+		padding: 0 2px;
 	}
 
 	code, kbd, pre, samp {
@@ -485,7 +489,7 @@ body {
 	}
 
 	hr {
-	    background-color: $border-color;
+	    background-color: $meta-color;
 	    border: 0 none;
 	    height: 1px;
 	    margin-bottom: 1.6m;
@@ -578,6 +582,7 @@ body {
 
 	ins {
 		background: #ffc;
+		color: $text-color;
 		text-decoration: none;
 	}
 }
@@ -1189,7 +1194,8 @@ video {
 	.current {
 		display: inline-block;
 		color: $meta-color;
-		border:solid 1px $meta-color;
+		border:solid 1px $border-color;
+		background: #FFF;
 		text-decoration:none;
 		text-align: center;
 		padding: 0.1em 0.3em;
@@ -1199,6 +1205,7 @@ video {
 		&.prev,
 		&.next {
 			color: $accent-color;
+			background: none;
 			border: none;
 		}
 	}
@@ -1261,8 +1268,14 @@ video {
 					}
 
 					a {
-						border: none;
-						padding: 0.8em;
+						border-bottom: solid 2px transparent;
+					}
+
+					&.menu-item-has-children {
+						>a:after {
+						   @include font-awesome("\f0d7");
+						   padding-left: 5px;
+						}
 					}
 
 					ul {
@@ -1271,9 +1284,9 @@ video {
 						display: none; /* hide dropdown */
 						width: 200px;
 						position: absolute;
-						top: 2.8em;
+						top: 2em;
 						left: 0;
-						border: dotted 1px #EEE;
+						border: solid 1px #EEE;
 						border-top: none;
 						z-index: 9999;
 
@@ -1282,10 +1295,17 @@ video {
 							margin: 0;
 							padding: 0;
 
+							&.menu-item-has-children {
+								>a:after {
+								   @include font-awesome("\f0da");
+								   padding-left: 5px;
+								}
+							}
+
 							a {
 								background-color: #FFF;
-								padding: 0.8em;
-								border-top: dotted 1px $border-color;
+								color: $text-color;
+								border-top: solid 1px $border-color;
 								height: auto;
 								white-space: normal;
 

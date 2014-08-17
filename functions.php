@@ -122,6 +122,8 @@ function birdegg_header_style() {
 	#header #branding #site-title,
 	#header #branding #site-title a,
 	#header #branding #site-description,
+	#footer .site-title,
+	#footer .site-title a,
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-ancestor > a,
 	#menu-wrapper .menu ul#menu-primary-items li a:hover {
@@ -134,15 +136,9 @@ function birdegg_header_style() {
 
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-ancestor > a {
-		border-color: #<?php header_textcolor();?>;
+		border-bottom-color: #<?php header_textcolor();?>;
 	}
 
-	#content h1,
-	#content h2,
-	#content h3,
-	#content h4,
-	#content h5,
-	#content h6,
 	#content #comments li.bypostauthor .comment_meta .author,
 	#content .tablenav a.page-numbers.prev,
 	#content .tablenav a.page-numbers.next,
@@ -150,9 +146,7 @@ function birdegg_header_style() {
 	#content .hentry .page-links,
 	#widget-area .widget h3,
 	#widget-area .widget #wp-calendar tbody th a,
-	#widget-area .widget #wp-calendar tbody td a,
-	#footer .site-title,
-	#footer .site-title a {
+	#widget-area .widget #wp-calendar tbody td a {
 		color: <?php echo $birdegg_accent_color; ?>;
 		}
 
@@ -168,14 +162,25 @@ function birdegg_header_style() {
 		}
 
 	.wrapper,
+	#content h1,
+	#content h2,
+	#content h3,
+	#content h4,
+	#content h5,
+	#content h6,
 	#content .hentry .entry-header .entry-title,
 	#content .hentry .entry-header .entry-title a,
-		#menu-wrapper .menu ul#menu-primary-items li a {
+	#menu-wrapper .menu ul#menu-primary-items li a {
 		color:  <?php echo $birdegg_text_color; ?>;
 		}
 
+	#content h2,
+	#content h3 {
+		border-color: <?php echo $birdegg_text_color; ?>;
+		}
+
 	a {
-			color:  <?php echo $birdegg_link_color; ?>;
+		color:  <?php echo $birdegg_link_color; ?>;
 		}
 
 	#widget-area {
@@ -229,16 +234,15 @@ function birdegg_admin_header_style() {
 function birdegg_admin_header_image() {
 
 	$style = '';
-		if ( 'blank' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) || '' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) ){
+	if ( 'blank' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) || '' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) ){
 		$style = ' style="display:none;"';
 	}
-?>
-	<?php
-		$header_image = get_header_image();
-		if ( ! empty( $header_image ) ) : ?>
-			<div id="headerimage">
-				<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
-			</div>
+
+	$header_image = get_header_image();
+	if ( ! empty( $header_image ) ) : ?>
+		<div id="headerimage">
+			<img src="<?php echo esc_url( $header_image ); ?>" alt="" />
+		</div>
 	<?php endif; ?>
 
 	<div id="birdegg_header">
@@ -360,23 +364,12 @@ function birdegg_scripts() {
 add_action( 'wp_enqueue_scripts', 'birdegg_scripts' );
 
 //////////////////////////////////////////////////////
-// Enqueue Scripts for admin
-function birdegg_admin_scripts( $hook_suffix ) {
-
-	if ( 'appearance_page_custom-header' != $hook_suffix )
-		return;
-
-	wp_enqueue_style( 'birdegg-google-font', '//fonts.googleapis.com/css?family=Raleway', false, null, 'all' );
-}
-add_action( 'admin_enqueue_scripts', 'birdegg_admin_scripts' );
-
-//////////////////////////////////////////////////////
 // Theme Customizer
 function birdegg_customize($wp_customize) {
  
 	$wp_customize->add_section( 'birdegg_customize', array(
 		'title'=> __( 'Theme Options', 'birdegg' ),
-		'priority' => 99,
+		'priority'	=> 999,
 	) );
 
 	// Accent Color
