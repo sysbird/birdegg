@@ -136,7 +136,7 @@ body {
 		#site-title {
 			margin: 0;
 			padding: 0;
-			font-size: 2.4rem;
+			font-size: 2.8rem;
 			font-weight: normal;
 			line-height: 1;
 
@@ -237,6 +237,8 @@ body {
 		.content-title {
 			color: $accent-color;
 			margin: 0;
+			font-size: 1.4rem;
+			font-weight: bold;
 		}
 	}
 
@@ -315,7 +317,7 @@ body {
 
 			.postdate {
 				&:before {
-				    @include font-awesome("\f073");
+				    @include font-awesome("\f017");
 				}
 			}
 
@@ -415,175 +417,178 @@ body {
 		border-left: solid 7px $text-color;
 		padding-left: 10px;
 	}
-	
-	p {
-		line-height: 1.6;
-		margin: 0 0 1.6em;
-	}
-
-	blockquote {
-		margin-left: 1em;
-		padding-left: 1em;
-		border-left: 10px solid $border-color;
-
-		small {
-			display: block;
-			line-height: 20px;
-			color: #999999;
+		
+	.entry-content,
+	#comments {
+		p {
+			line-height: 1.6;
+			margin: 0 0 1.6em;
 		}
 
-		small:before {
-			content: '\2014 \00A0';
+		blockquote {
+			margin-left: 1em;
+			padding-left: 1em;
+			border-left: 10px solid $border-color;
+
+			small {
+				display: block;
+				line-height: 20px;
+				color: #999999;
+			}
+
+			small:before {
+				content: '\2014 \00A0';
+			}
+
+			cite:before {
+				content: "-";
+			}
+
+			cite {
+				color: #999999;
+				display: block;
+			}
+
 		}
 
-		cite:before {
-			content: "-";
-		}
+		table {
+			max-width: 100%;
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin-bottom: 1.6em;
 
-		cite {
-			color: #999999;
-			display: block;
-		}
+			th,
+			td {
+				border-bottom: 1px solid $border-color;
+				line-height: 1.4;
+				padding: 0.8em;
+				text-align: left;
+				vertical-align: top;
+			}
 
-	}
-
-	table {
-		max-width: 100%;
-		width: 100%;
-		border-collapse: collapse;
-		border-spacing: 0;
-		margin-bottom: 1.6em;
-
-		th,
-		td {
-			border-bottom: 1px solid $border-color;
-			line-height: 1.4;
-			padding: 0.8em;
-			text-align: left;
-			vertical-align: top;
-		}
-
-		th {
-			border-bottom: 2px solid $border-color;
-			font-weight: bold;
-		}
-	}
-
-	pre {
-		border: dashed 1px #CCC;
-		background: $border-color;
-		padding: 0.8em;
-		margin-bottom: 1.6em;
-		line-height: 1.2;
-		color: $text-color;
-	}
-
-	code {
-		background: $border-color;
-		color: $text-color;
-		padding: 0 2px;
-	}
-
-	code, kbd, pre, samp {
-	    font-family: monospace,serif;
-	}
-
-	hr {
-	    background-color: $meta-color;
-	    border: 0 none;
-	    height: 1px;
-	    margin-bottom: 1.6m;
-	}
-
-	sup, sub {
-	    font-size: 80%;
-	    height: 0;
-	    line-height: 0;
-	    position: relative;
-	    vertical-align: baseline;
-	}
-
-	sub {
-		top: 0.5ex;
-	}
-
-	sup {
-		bottom: 1ex;
-	}
-
-	em {
-		font-style: italic;
-	}
-
-	strong {
-		font-weight: bold;
-	}
-
-	abbr, acronym {
-    	border-bottom: 1px dotted #666;
-    	cursor: help;
-	}
-	ul,
-	ol {
-		margin: 0 0 1.6em 1em;
-		padding: 0 0 0 1em;
-		line-height: 1.4;
-
-		li {
-			padding: 0.2em 0;
-		}
-
-		ul,
-		ol {
-			margin-bottom: 0;
-		}
-	}
-
-	ul {
-		list-style: disc;
-		ul {
-			list-style: circle;
-			ul {
-				list-style: square;
+			th {
+				border-bottom: 2px solid $border-color;
+				font-weight: bold;
 			}
 		}
-	}
 
-	ol {
-		list-style: decimal;
+		pre {
+			border: dashed 1px #CCC;
+			background: $border-color;
+			padding: 0.8em;
+			margin-bottom: 1.6em;
+			line-height: 1.2;
+			color: $text-color;
+		}
+
+		code {
+			background: $border-color;
+			color: $text-color;
+			padding: 0 2px;
+		}
+
+		code, kbd, pre, samp {
+		    font-family: monospace,serif;
+		}
+
+		hr {
+		    background-color: $meta-color;
+		    border: 0 none;
+		    height: 1px;
+		    margin-bottom: 1.6m;
+		}
+
+		sup, sub {
+		    font-size: 80%;
+		    height: 0;
+		    line-height: 0;
+		    position: relative;
+		    vertical-align: baseline;
+		}
+
+		sub {
+			top: 0.5ex;
+		}
+
+		sup {
+			bottom: 1ex;
+		}
+
+		em {
+			font-style: italic;
+		}
+
+		strong {
+			font-weight: bold;
+		}
+
+		abbr, acronym {
+	    	border-bottom: 1px dotted #666;
+	    	cursor: help;
+		}
+		ul,
 		ol {
-			list-style:upper-alpha;
+			margin: 0 0 1.6em 1em;
+			padding: 0 0 0 1em;
+			line-height: 1.4;
+
+			li {
+				padding: 0.2em 0;
+			}
+
+			ul,
 			ol {
-				list-style:lower-roman;
-				ol {
-					list-style:lower-alpha;
+				margin-bottom: 0;
+			}
+		}
+
+		ul {
+			list-style: disc;
+			ul {
+				list-style: circle;
+				ul {
+					list-style: square;
 				}
 			}
 		}
-	}
 
-	dl {
-		margin:0 0 1em 0;
-		line-height: 1.6;
-
-		dt {
-			font-weight: bold;
+		ol {
+			list-style: decimal;
+			ol {
+				list-style:upper-alpha;
+				ol {
+					list-style:lower-roman;
+					ol {
+						list-style:lower-alpha;
+					}
+				}
+			}
 		}
 
-		dd {
-			margin: 0 1.5em 1.6em;
-			padding: 0;
+		dl {
+			margin:0 0 1em 0;
+			line-height: 1.6;
+
+			dt {
+				font-weight: bold;
+			}
+
+			dd {
+				margin: 0 1.5em 1.6em;
+				padding: 0;
+			}
 		}
-	}
 
-	del {
-		color: #C00;
-	}
+		del {
+			color: #C00;
+		}
 
-	ins {
-		background: #ffc;
-		color: $text-color;
-		text-decoration: none;
+		ins {
+			background: #ffc;
+			color: $text-color;
+			text-decoration: none;
+		}
 	}
 }
 
@@ -894,6 +899,7 @@ video {
 	.site-title {
 		padding: 1.6em 0;
 		color: $accent-color;
+		line-height: 1.4;
 
 		a {
 			color: $accent-color;
@@ -901,7 +907,7 @@ video {
 
 		.generator {
 
-			&:before {
+			&:after {
 			    @include font-awesome("\f19a");
 			    padding-left: 0.2em;
 			}
@@ -1343,7 +1349,7 @@ video {
 				.entry-header,
 				.entry-content,
 				.entry-meta {
-					margin-left: 36%;
+					margin-left: 320px;
 				}
 
 				&.no-eyecatch {

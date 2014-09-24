@@ -11,7 +11,19 @@ The template for displaying the footer.
 		</section>
 
 		<div class="container">
-			<div class="site-title"><span class="home"><a href="<?php echo esc_url(home_url( '/' )) ; ?>"><?php bloginfo( 'name' ); ?></a></span><span class="generator"><a href="http://wordpress.org/" target="_blank"><?php printf( __( 'Proudly powered by WordPress', 'birdegg' ), 'WordPress' ); ?></a></span></div>
+			<div class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ) ; ?>"><strong><?php bloginfo(); ?></strong></a>
+
+				<?php if( get_theme_mod( 'copyright', 'true' ) ): ?>
+					<?php printf(__( 'Copyright &copy; %s All Rights Reserved.', 'birdegg' ), birdegg_get_copyright_year() ); ?>
+				<?php endif; ?>
+
+				<?php if( get_theme_mod( 'credit', 'true' ) ): ?>
+					<br>
+					<span class="generator"><a href="<?php echo esc_url('http://wordpress.org/'); ?>" target="_blank"><?php _e( 'Proudly powered by WordPress', 'birdegg' ); ?></a></span>
+				<?php printf(__( 'BirdEGG theme by %sSysbird%s', 'birdegg' ), '<a href="' .esc_url('https://profiles.wordpress.org/sysbird/') .'" target="_blank">', '</a>' ); ?>
+				<?php endif; ?>
+			</div>
 		</div>
 		<p id="back-top"><a href="#top"><span><?php _e( 'Go Top', 'birdegg'); ?></span></a></p>
 	</footer>

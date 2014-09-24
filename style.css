@@ -143,7 +143,7 @@ body {
     #header #branding #site-title {
       margin: 0;
       padding: 0;
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: normal;
       line-height: 1; }
       #header #branding #site-title a {
@@ -221,7 +221,9 @@ body {
     margin: 0 0 3.2em 0; }
     #content .content-header .content-title {
       color: #ff4a5d;
-      margin: 0; }
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: bold; }
   #content .hentry {
     width: 100%;
     word-wrap: break-word;
@@ -284,7 +286,7 @@ body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale; }
       #content .hentry .entry-meta .postdate:before {
-        content: "\f073";
+        content: "\f017";
         display: inline-block;
         font-family: FontAwesome;
         font-style: normal;
@@ -395,113 +397,158 @@ body {
   #content h3 {
     border-left: solid 7px #333333;
     padding-left: 10px; }
-  #content p {
+  #content .entry-content p,
+  #content #comments p {
     line-height: 1.6;
     margin: 0 0 1.6em; }
-  #content blockquote {
+  #content .entry-content blockquote,
+  #content #comments blockquote {
     margin-left: 1em;
     padding-left: 1em;
     border-left: 10px solid #e5e5e5; }
-    #content blockquote small {
+    #content .entry-content blockquote small,
+    #content #comments blockquote small {
       display: block;
       line-height: 20px;
       color: #999999; }
-    #content blockquote small:before {
+    #content .entry-content blockquote small:before,
+    #content #comments blockquote small:before {
       content: '\2014 \00A0'; }
-    #content blockquote cite:before {
+    #content .entry-content blockquote cite:before,
+    #content #comments blockquote cite:before {
       content: "-"; }
-    #content blockquote cite {
+    #content .entry-content blockquote cite,
+    #content #comments blockquote cite {
       color: #999999;
       display: block; }
-  #content table {
+  #content .entry-content table,
+  #content #comments table {
     max-width: 100%;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 1.6em; }
-    #content table th,
-    #content table td {
+    #content .entry-content table th,
+    #content .entry-content table td,
+    #content #comments table th,
+    #content #comments table td {
       border-bottom: 1px solid #e5e5e5;
       line-height: 1.4;
       padding: 0.8em;
       text-align: left;
       vertical-align: top; }
-    #content table th {
+    #content .entry-content table th,
+    #content #comments table th {
       border-bottom: 2px solid #e5e5e5;
       font-weight: bold; }
-  #content pre {
+  #content .entry-content pre,
+  #content #comments pre {
     border: dashed 1px #CCC;
     background: #e5e5e5;
     padding: 0.8em;
     margin-bottom: 1.6em;
     line-height: 1.2;
     color: #333333; }
-  #content code {
+  #content .entry-content code,
+  #content #comments code {
     background: #e5e5e5;
     color: #333333;
     padding: 0 2px; }
-  #content code, #content kbd, #content pre, #content samp {
+  #content .entry-content code, #content .entry-content kbd, #content .entry-content pre, #content .entry-content samp,
+  #content #comments code,
+  #content #comments kbd,
+  #content #comments pre,
+  #content #comments samp {
     font-family: monospace,serif; }
-  #content hr {
+  #content .entry-content hr,
+  #content #comments hr {
     background-color: #999999;
     border: 0 none;
     height: 1px;
     margin-bottom: 1.6m; }
-  #content sup, #content sub {
+  #content .entry-content sup, #content .entry-content sub,
+  #content #comments sup,
+  #content #comments sub {
     font-size: 80%;
     height: 0;
     line-height: 0;
     position: relative;
     vertical-align: baseline; }
-  #content sub {
+  #content .entry-content sub,
+  #content #comments sub {
     top: 0.5ex; }
-  #content sup {
+  #content .entry-content sup,
+  #content #comments sup {
     bottom: 1ex; }
-  #content em {
+  #content .entry-content em,
+  #content #comments em {
     font-style: italic; }
-  #content strong {
+  #content .entry-content strong,
+  #content #comments strong {
     font-weight: bold; }
-  #content abbr, #content acronym {
+  #content .entry-content abbr, #content .entry-content acronym,
+  #content #comments abbr,
+  #content #comments acronym {
     border-bottom: 1px dotted #666;
     cursor: help; }
-  #content ul,
-  #content ol {
+  #content .entry-content ul,
+  #content .entry-content ol,
+  #content #comments ul,
+  #content #comments ol {
     margin: 0 0 1.6em 1em;
     padding: 0 0 0 1em;
     line-height: 1.4; }
-    #content ul li,
-    #content ol li {
+    #content .entry-content ul li,
+    #content .entry-content ol li,
+    #content #comments ul li,
+    #content #comments ol li {
       padding: 0.2em 0; }
-    #content ul ul,
-    #content ul ol,
-    #content ol ul,
-    #content ol ol {
+    #content .entry-content ul ul,
+    #content .entry-content ul ol,
+    #content .entry-content ol ul,
+    #content .entry-content ol ol,
+    #content #comments ul ul,
+    #content #comments ul ol,
+    #content #comments ol ul,
+    #content #comments ol ol {
       margin-bottom: 0; }
-  #content ul {
+  #content .entry-content ul,
+  #content #comments ul {
     list-style: disc; }
-    #content ul ul {
+    #content .entry-content ul ul,
+    #content #comments ul ul {
       list-style: circle; }
-      #content ul ul ul {
+      #content .entry-content ul ul ul,
+      #content #comments ul ul ul {
         list-style: square; }
-  #content ol {
+  #content .entry-content ol,
+  #content #comments ol {
     list-style: decimal; }
-    #content ol ol {
+    #content .entry-content ol ol,
+    #content #comments ol ol {
       list-style: upper-alpha; }
-      #content ol ol ol {
+      #content .entry-content ol ol ol,
+      #content #comments ol ol ol {
         list-style: lower-roman; }
-        #content ol ol ol ol {
+        #content .entry-content ol ol ol ol,
+        #content #comments ol ol ol ol {
           list-style: lower-alpha; }
-  #content dl {
+  #content .entry-content dl,
+  #content #comments dl {
     margin: 0 0 1em 0;
     line-height: 1.6; }
-    #content dl dt {
+    #content .entry-content dl dt,
+    #content #comments dl dt {
       font-weight: bold; }
-    #content dl dd {
+    #content .entry-content dl dd,
+    #content #comments dl dd {
       margin: 0 1.5em 1.6em;
       padding: 0; }
-  #content del {
+  #content .entry-content del,
+  #content #comments del {
     color: #C00; }
-  #content ins {
+  #content .entry-content ins,
+  #content #comments ins {
     background: #ffc;
     color: #333333;
     text-decoration: none; }
@@ -728,10 +775,11 @@ video {
 --------------------------------------------- */
 #footer .site-title {
   padding: 1.6em 0;
-  color: #ff4a5d; }
+  color: #ff4a5d;
+  line-height: 1.4; }
   #footer .site-title a {
     color: #ff4a5d; }
-  #footer .site-title .generator:before {
+  #footer .site-title .generator:after {
     content: "\f19a";
     display: inline-block;
     font-family: FontAwesome;
@@ -1088,7 +1136,7 @@ video {
     #content ul.article .hentry .entry-header,
     #content ul.article .hentry .entry-content,
     #content ul.article .hentry .entry-meta {
-      margin-left: 36%; }
+      margin-left: 320px; }
     #content ul.article .hentry.no-eyecatch .entry-header,
     #content ul.article .hentry.no-eyecatch .entry-content,
     #content ul.article .hentry.no-eyecatch .entry-meta {

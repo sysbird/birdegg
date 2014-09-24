@@ -18,7 +18,7 @@ The Header for our theme.
 <body <?php body_class(); ?>>
 
 <?php $birdegg_header_image = get_header_image(); ?>
-<?php if( ! is_paged() && ! empty( $birdegg_header_image ) ): ?>
+<?php if( ! empty( $birdegg_header_image ) ): ?>
 	<div id="headerimage">
 		<img src="<?php header_image(); ?>" alt="<?php bloginfo( 'name' ); ?>">
 	</div>

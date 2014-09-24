@@ -104,39 +104,69 @@ function birdegg_the_pagenation() {
 	));
 }
 
+//////////////////////////////////////////////////////
+// Copyright Year
+function birdegg_get_copyright_year() {
+
+	$birdegg_copyright_year = date("Y");
+
+	$birdegg_first_year = $birdegg_copyright_year;
+	$args = array(
+		'numberposts' => 1,
+		'orderby'     => 'post_date',
+		'order'       => 'ASC',
+	);
+	$posts = get_posts( $args );
+
+	foreach ( $posts as $post ) {
+		$birdegg_first_year = mysql2date( 'Y', $post->post_date, true );
+	}
+
+	if( $birdegg_copyright_year <> $birdegg_first_year ){
+		$birdegg_copyright_year = $birdegg_first_year .' - ' .$birdegg_copyright_year;
+	}
+
+	return $birdegg_copyright_year;
+}
 
 //////////////////////////////////////////////////////
 // Header Style
 function birdegg_header_style() {
 
 	//Theme Option
-	$birdegg_accent_color = get_theme_mod( 'birdegg_accent_color', '#ff4a5d' );
-	$birdegg_text_color = get_theme_mod( 'birdegg_text_color', '#333' );
-	$birdegg_link_color = get_theme_mod( 'birdegg_link_color', '#1c4bbe' );
-	$birdegg_widget_color = get_theme_mod( 'birdegg_widget_color', '#E5E5E5' );
+	$birdegg_accent_color = get_theme_mod( 'accent_color', '#ff4a5d' );
+	$birdegg_text_color = get_theme_mod( 'text_color', '#333' );
+	$birdegg_link_color = get_theme_mod( 'link_color', '#1c4bbe' );
+	$birdegg_widget_color = get_theme_mod( 'widget_color', '#E5E5E5' );
+	$birdegg_header_color = get_header_textcolor();
 
 ?>
 
 <style type="text/css">
 
-	#header #branding #site-title,
-	#header #branding #site-title a,
-	#header #branding #site-description,
-	#footer .site-title,
-	#footer .site-title a,
+	if ( 'blank' <> $birdegg_header_color ) {
+		#header #branding #site-title,
+		#header #branding #site-title a,
+		#header #branding #site-description,
+		#footer .site-title,
+		#footer .site-title a {
+			color: #<?php echo $birdegg_header_color; ?>;
+		}
+	}
+
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-ancestor > a,
 	#menu-wrapper .menu ul#menu-primary-items li a:hover {
-		color: #<?php header_textcolor();?>;
+		color: <?php echo $birdegg_accent_color; ?>;
 		}
 
 	#menu-wrapper .menu #small-menu {
-		background-color: #<?php header_textcolor();?>;
+		background-color: <?php echo $birdegg_accent_color; ?>;
 	}
 
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
 	#menu-wrapper .menu ul#menu-primary-items .current-menu-ancestor > a {
-		border-bottom-color: #<?php header_textcolor();?>;
+		border-bottom-color: <?php echo $birdegg_accent_color; ?>;
 	}
 
 	#content #comments li.bypostauthor .comment_meta .author,
@@ -257,6 +287,15 @@ function birdegg_admin_header_image() {
 // Setup Theme
 function birdegg_setup() {
 
+	if ( !class_exists( 'birdEGG' ) ) {
+		class  extends KotetsuBaseFunctions {
+			public function __construct() {
+				parent::__construct();
+			}
+		}
+	}
+	$Kotetsu = new Kotetsu();
+
 	// Set languages
 	load_theme_textdomain( 'birdegg', get_template_directory() . '/languages' );
 
@@ -368,53 +407,78 @@ add_action( 'wp_enqueue_scripts', 'birdegg_scripts' );
 function birdegg_customize($wp_customize) {
  
 	$wp_customize->add_section( 'birdegg_customize', array(
-		'title'=> __( 'Theme Options', 'birdegg' ),
+		'title'=> __( 'BirdEGG Options', 'birdegg' ),
 		'priority'	=> 999,
 	) );
 
 	// Accent Color
-	$wp_customize->add_setting( 'birdegg_accent_color', array(
+	$wp_customize->add_setting( 'accent_color', array(
 		'default' => '#ff4a5d',
 	) );
-
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'birdegg_accent_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
 		'label' => __( 'Accent Color', 'birdegg' ),
 		'section'=> 'birdegg_customize',
-		'settings' => 'birdegg_accent_color',
+		'settings' => 'accent_color',
 	) ) );
 
 	// Text Color
-	$wp_customize->add_setting( 'birdegg_text_color', array(
+	$wp_customize->add_setting( 'text_color', array(
 		'default' => '#333',
 	) );
 
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'birdegg_text_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color', array(
 		'label' => __( 'Text Color', 'birdegg' ),
 		'section'=> 'birdegg_customize',
-		'settings' => 'birdegg_text_color',
+		'settings' => 'text_color',
 	) ) );
 
 	// Link Color
-	$wp_customize->add_setting( 'birdegg_link_color', array(
+	$wp_customize->add_setting( 'link_color', array(
 		'default' => '#1c4bbe',
 	) );
 
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'birdegg_link_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
 		'label' => __( 'Link Color', 'birdegg' ),
 		'section'=> 'birdegg_customize',
-		'settings' => 'birdegg_link_color',
+		'settings' => 'link_color',
 	) ) );
 
 	// Widget Area Background Color
-	$wp_customize->add_setting( 'birdegg_widget_color', array(
+	$wp_customize->add_setting( 'widget_color', array(
 		'default' => '#E5E5E5',
 	) );
 
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'birdegg_widget_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'widget_color', array(
 		'label' => __( 'Widget BackgroundColor', 'birdegg' ),
 		'section'=> 'birdegg_customize',
-		'settings' => 'birdegg_widget_color',
+		'settings' => 'widget_color',
 	) ) );
+
+	// Display Copyright
+	$wp_customize->add_setting( 'copyright', array(
+		'default'  => 'true',
+		'type'     => 'theme_mod',
+	) );
+
+	$wp_customize->add_control( 'copyright', array(
+		'label'		=> __( 'Display Copyright', 'birdegg' ),
+		'section'  => 'birdegg_customize',
+		'type'     => 'checkbox',
+		'settings' => 'copyright',
+	) );
+
+	// Display Credit
+	$wp_customize->add_setting( 'credit', array(
+		'default'  => 'true',
+		'type'     => 'theme_mod',
+	) );
+
+	$wp_customize->add_control( 'credit', array(
+		'label'		=> __( 'Display Credit', 'birdegg' ),
+		'section'  => 'birdegg_customize',
+		'type'     => 'checkbox',
+		'settings' => 'credit',
+	) );
 }
 add_action( 'customize_register', 'birdegg_customize' );
 
