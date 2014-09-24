@@ -27,7 +27,7 @@ The template for displaying Comments.
 	<?php endif;  ?>
 
 		<ol class="commentlist">
-			<?php wp_list_comments( array( 'callback' => 'birdegg_custom_comments' ) ); ?>
+			<?php wp_list_comments( array( 'callback' => 'BirdEGG::the_comments' ) ); ?>
 		</ol>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>

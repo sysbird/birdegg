@@ -39,7 +39,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 			</ul>
-			<div class="tablenav"><?php birdegg_the_pagenation(); ?></div>
+			<div class="tablenav"><?php BirdEGG::the_pagenation(); ?></div>
 		<?php else: ?>
 			<p><?php _e( 'Sorry, no posts matched your criteria.', 'birdegg' ); ?></p>
 		<?php endif; ?>

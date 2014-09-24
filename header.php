@@ -24,7 +24,7 @@ The Header for our theme.
 	</div>
 <?php endif; ?>
 
-<div <?php birdegg_wrapper_class('wrapper'); ?>>
+<div <?php BirdEGG::wrapper_class('wrapper'); ?>>
 	<header id="header">
 		<div class="container">
 			<div id="branding">

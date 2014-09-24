@@ -18,7 +18,7 @@ get_header(); ?>
 				<?php get_template_part( 'content', get_post_format() ); ?>
 			<?php endwhile; ?>
 			</ul>
-			<div class="tablenav"><?php birdegg_the_pagenation(); ?></div>
+			<div class="tablenav"><?php BirdEGG::the_pagenation(); ?></div>
 
 		<?php else: ?>
 			<p><?php printf(__('Sorry, no posts matched &#8216;%s&#8217;', 'birdegg'), esc_html($s) ); ?>
