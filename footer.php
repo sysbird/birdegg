@@ -15,7 +15,7 @@ The template for displaying the footer.
 				<a href="<?php echo esc_url( home_url( '/' ) ) ; ?>"><strong><?php bloginfo(); ?></strong></a>
 
 				<?php if( get_theme_mod( 'copyright', 'true' ) ): ?>
-					<?php printf(__( 'Copyright &copy; %s All Rights Reserved.', 'birdegg' ), birdegg_get_copyright_year() ); ?>
+					<?php printf(__( 'Copyright &copy; %s All Rights Reserved.', 'birdegg' ), BirdEGG::get_copyright_year() ); ?>
 				<?php endif; ?>
 
 				<?php if( get_theme_mod( 'credit', 'true' ) ): ?>

@@ -103,12 +103,6 @@ class BirdEGGFunctions {
 				'description' => 'birdegg'
 			)
 		) );
-
-		// Add support for news content.
-		add_theme_support( 'news-content', array(
-			'news_content_filter' => 'birdegg_get_news_posts',
-			'max_posts' => 5,
-		) );
 	}
 
 	//////////////////////////////////////////
@@ -434,6 +428,7 @@ class BirdEGGFunctions {
 		$wp_customize->add_setting( 'accent_color', array(
 			'default' => '#ff4a5d',
 		) );
+
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
 			'label' => __( 'Accent Color', 'birdegg' ),
 			'section'=> 'birdegg_customize',
